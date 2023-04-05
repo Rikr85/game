@@ -1,0 +1,337 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API RESTful en Laravel",
+        "description": "Mostando la Lista de URI's de mi API para el Primer Campeonato Mundial de Toros y Vacas",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/"
+        }
+    ],
+    "paths": {
+        "/api/game/": {
+            "post": {
+                "tags": [
+                    "game"
+                ],
+                "summary": "Registrar la información de un juego",
+                "operationId": "92265410c1216eea94e6611ea7d07ad4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "user": {
+                                                "type": "string"
+                                            },
+                                            "age": {
+                                                "type": "integer"
+                                            },
+                                            "time": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "user": "Mario",
+                                    "age": "20",
+                                    "time": "9"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El juego ha sido creado."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The user field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/game/{id}": {
+            "get": {
+                "tags": [
+                    "game"
+                ],
+                "summary": "Mostrar la información de un juego",
+                "operationId": "c44c86f879280733aafabf4aa2bb9375",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user": {
+                                            "type": "string",
+                                            "example": "Aderson Bolt"
+                                        },
+                                        "age": {
+                                            "type": "integer",
+                                            "example": "38"
+                                        },
+                                        "tries": {
+                                            "type": "integer",
+                                            "example": "15"
+                                        },
+                                        "time": {
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "0"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        },
+                                        "secret": {
+                                            "type": "string",
+                                            "example": "5178"
+                                        },
+                                        "last": {
+                                            "type": "string",
+                                            "example": "0000"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "game"
+                ],
+                "summary": "Proponer combinación, además de actualizar la información de un juego",
+                "operationId": "2fc941d15ec8de2005c89c2aa86b11fe",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "time": {
+                                                "type": "integer"
+                                            },
+                                            "code": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "time": "20",
+                                    "code": "9137"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user": {
+                                            "type": "string",
+                                            "example": "Aderson Bolt"
+                                        },
+                                        "age": {
+                                            "type": "integer",
+                                            "example": "38"
+                                        },
+                                        "tries": {
+                                            "type": "integer",
+                                            "example": "15"
+                                        },
+                                        "time": {
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "0"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        },
+                                        "secret": {
+                                            "type": "string",
+                                            "example": "5178"
+                                        },
+                                        "last": {
+                                            "type": "string",
+                                            "example": "0000"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "game"
+                ],
+                "summary": "Eliminar la información de un juego(game)",
+                "operationId": "0d34f7f3a14b2e1b1dd288e4101617f2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El juego: ($game->id) ha sido eliminado."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
